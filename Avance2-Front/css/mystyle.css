@@ -1,0 +1,23 @@
+.denuncia {
+  color: #eff0f6;
+}
+
+.denuncia:hover {
+  color: #eff0f6;
+}
+
+.botonesEdit {
+  padding: 5px 10px;
+  background-color: rgb(245, 151, 151);
+  border-radius: 5px;
+  color: red;
+  border-color: rgb(245, 151, 151);
+}
+
+.botonesMegusta {
+  padding: 5px 10px;
+  background-color: rgb(167, 167, 245);
+  border-radius: 5px;
+  color: blue;
+  border-color: rgb(167, 167, 245);
+}
