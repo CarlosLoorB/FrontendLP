@@ -1,37 +1,32 @@
-  function submitForm(event) {
-    console.log('esta bien enlazado');
-    event.preventDefault(); // Prevent the default form submission
+document.addEventListener("DOMContentLoaded", function () {
+  const botonesMegusta = document.querySelectorAll(".botonesMegusta");
 
-    let form = document.getElementById('signup-form');
+  botonesMegusta.forEach(function (button) {
+      button.addEventListener("click", function () {
+          // Obtén el ID de la denuncia desde el atributo data-id
+          const denunciaId = button.getAttribute("id");
 
-    let fecha = form.querySelector('[id="fecha"]').value;
-    let nombre = form.querySelector('[id="nombre"]').value;
-    let descripcion = form.querySelector('[id="descricpion"]').value;
-    let ubicacion = form.querySelector('[id="ubicacion"]').value;
+          // Realiza una solicitud AJAX para llamar al archivo PHP
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://localhost/LPPHP/LpVotar.php", true);
+          xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-    let formData = {
-      fecha: fecha,
-      nombre: nombre,
-      descripcion: descripcion,
-      ubicacion: ubicacion
-    };
-    console.log(formData);
+          // Envía el ID de la denuncia como JSON en el cuerpo de la solicitud
+          const data = JSON.stringify({ id: denunciaId });
+          xhr.send(data);
 
-    const jsonData = JSON.stringify(formData);
-
-    fetch('http://localhost/LPPHP/LpBackend.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: jsonData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Server response:', data);
-      window.location.href = 'index.html';
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                      // La solicitud se completó correctamente
+                      console.log(xhr.responseText);
+                      // Puedes mostrar un mensaje de confirmación aquí
+                  } else {
+                      // Hubo un error en la solicitud
+                      console.error("Error en la solicitud.");
+                  }
+              }
+          };
+      });
+  });
+});

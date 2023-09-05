@@ -77,6 +77,8 @@ function procesarDenuncias(denunciasObj) {
       meGustaButton.type = "button";
       meGustaButton.className = "botonesMegusta";
       meGustaButton.textContent = "Me gusta";
+      meGustaButton.id = denuncia.id;
+
       meGustaCell.appendChild(meGustaButton);
       row.appendChild(meGustaCell);
 
