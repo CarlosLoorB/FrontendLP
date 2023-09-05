@@ -48,6 +48,9 @@ function procesarDenuncias(denunciasObj) {
 
       const descripcionCell = document.createElement('td');
       descripcionCell.textContent = denuncia.descripcion;
+      descripcionCell.style.whiteSpace = "nowrap";
+      descripcionCell.style.overflow = "hidden";
+      descripcionCell.style.textOverflow = "ellipsis";
       row.appendChild(descripcionCell);
 
       const ubicacionCell = document.createElement('td');
@@ -74,6 +77,8 @@ function procesarDenuncias(denunciasObj) {
       meGustaButton.type = "button";
       meGustaButton.className = "botonesMegusta";
       meGustaButton.textContent = "Me gusta";
+      meGustaButton.id = denuncia.id;
+
       meGustaCell.appendChild(meGustaButton);
       row.appendChild(meGustaCell);
 
