@@ -1,9 +1,6 @@
-.denuncia {
-  color: #eff0f6;
-}
 
 .denuncia:hover {
-  color: #eff0f6;
+  background-color: #363535;
 }
 
 .botonesEdit {
@@ -24,4 +21,17 @@
 
 .opcion {
   font-size: 15px;
+}
+
+.stat-cards-icon{
+  width: 35px !important; 
+  height: 35px !important; 
+}
+
+thead {
+  text-align: center;
+}
+
+table {
+  border-spacing: 15px;
 }
