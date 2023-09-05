@@ -1,14 +1,19 @@
-  function submitForm(event) {
-    console.log('esta bien enlazado');
-    event.preventDefault(); // Prevent the default form submission
+let form = document.getElementById('signup-form');
+form.addEventListener('submit', submitForm);
 
-    let form = document.getElementById('signup-form');
+function submitForm(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  console.log("Entramos al submit form")
+  let form = document.getElementById('signup-form');
 
-    let fecha = form.querySelector('[id="fecha"]').value;
-    let nombre = form.querySelector('[id="nombre"]').value;
-    let descripcion = form.querySelector('[id="descricpion"]').value;
-    let ubicacion = form.querySelector('[id="ubicacion"]').value;
+  let fecha = form.querySelector('[id="fecha"]').value;
+  let nombre = form.querySelector('[id="nombre"]').value;
+  let descripcion = form.querySelector('[id="descricpion"]').value;
+  let ubicacion = form.querySelector('[id="ubicacion"]').value;
 
+  // Verificar que todos los campos estén llenos antes de enviar la solicitud
+  if (fecha && nombre && descripcion && ubicacion) {
     let formData = {
       fecha: fecha,
       nombre: nombre,
@@ -34,4 +39,7 @@
     .catch(error => {
       console.error('Error:', error);
     });
+  } else {
+    console.error('Por favor, complete todos los campos antes de enviar el formulario.');
   }
+}
