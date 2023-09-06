@@ -82,8 +82,15 @@ function procesarDenuncias(denunciasObj) {
 
       const estadoCell = document.createElement('td');
       const estadoSpan = document.createElement('span');
-      estadoSpan.className = "badge-active";
       estadoSpan.textContent = denuncia.estado;
+      if (denuncia.estado === 'Activo') {
+        estadoSpan.className = 'badge-active';
+      } else if (denuncia.estado === 'Desestimado') {
+        estadoSpan.className = 'badge-trashed';
+      } else if (denuncia.estado === 'En Trabajo') {
+        estadoSpan.className = 'badge-pending'; // Otra clase o ninguna clase
+      }
+    
       estadoCell.appendChild(estadoSpan);
       row.appendChild(estadoCell);
 
@@ -122,9 +129,61 @@ function procesarDenuncias(denunciasObj) {
 
 };
 
+function llenarLista() {
+  fetch('http://localhost/LPPHP/lpRanking.php') // Reemplaza 'URL_DEL_PHP.php' con la URL real de tu PHP
+    .then(response => response.json())
+    .then(data => {
+      const lista = document.getElementById('listaRanking');
+
+      // Recorre los datos y crea elementos <li> y <a> para cada entrada
+      data.forEach((entry, index) => {
+        const listItem = document.createElement('li');
+        const anchor = document.createElement('a');
+        
+        // Crear el div con la clase 'top-cat-list__title'
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'top-cat-list__title';
+        titleDiv.textContent = entry.nombre;
+        
+        // Crear el span para los votos
+        const votesSpan = document.createElement('span');
+        votesSpan.textContent = ` ${entry.voto} votos`;
+        
+        // Crear el div con la clase 'top-cat-list__subtitle'
+        const subtitleDiv = document.createElement('div');
+        subtitleDiv.className = 'top-cat-list__subtitle';
+        
+        // Crear el span para el estado
+        const stateSpan = document.createElement('span');
+        stateSpan.textContent = entry.estado;
+        
+        // Cambiar la clase según el estado
+        if (entry.estado === 'Activo') {
+          stateSpan.className = 'success';
+        } else if (entry.estado === 'Desestimado') {
+          stateSpan.className = 'danger';
+        } else if (entry.estado === 'En Trabajo') {
+          stateSpan.className = 'warning'; // Otra clase o ninguna clase
+        }
+
+        // Construir la estructura de elementos
+        titleDiv.appendChild(votesSpan);
+        subtitleDiv.appendChild(stateSpan);
+        anchor.appendChild(titleDiv);
+        anchor.appendChild(subtitleDiv);
+        listItem.appendChild(anchor);
+        lista.appendChild(listItem);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
   feather.replace();
   obtenerDenuncias();
+  llenarLista();
 });

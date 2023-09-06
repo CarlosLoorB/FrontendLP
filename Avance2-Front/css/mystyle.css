@@ -4,7 +4,7 @@
 }
 
 .botonesEdit {
-  padding: 5px 15px;
+  padding: 12px 15px;
   background-color: rgb(245, 151, 151);
   border-radius: 5px;
   color: red;
@@ -46,3 +46,12 @@ tbody {
   padding-right: 15px;
 }
 
+.badge-pending,
+.badge-active,
+.badge-trashed,
+.badge-success,
+.badge-disabled {
+  padding: 5px 1px 5px 1px !important;
+  border-radius: 15px !important;
+
+}
