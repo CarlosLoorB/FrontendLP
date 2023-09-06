@@ -4,7 +4,7 @@
 }
 
 .botonesEdit {
-  padding: 5px 10px;
+  padding: 5px 15px;
   background-color: rgb(245, 151, 151);
   border-radius: 5px;
   color: red;
@@ -12,11 +12,15 @@
 }
 
 .botonesMegusta {
-  padding: 5px 10px;
+  padding: 5px 15px;
   background-color: rgb(167, 167, 245);
   border-radius: 5px;
   color: blue;
   border-color: rgb(167, 167, 245);
+}
+
+.botonesMegusta:active {
+  background-color: azure;
 }
 
 .opcion {
@@ -32,6 +36,13 @@ thead {
   text-align: center;
 }
 
-table {
-  border-spacing: 15px;
+tbody {
+  text-align: center;
+  border-collapse: collapse;
 }
+
+.users-table td {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
