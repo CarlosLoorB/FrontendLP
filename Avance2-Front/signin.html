@@ -18,38 +18,33 @@
       <article class="sign-up">
         <h1 class="sign-up__title">Bienvenido de nuevo!</h1>
         <p class="sign-up__subtitle">Realiza los cambios necesarios</p>
-        <form class="sign-up-form form" action="" method="">
+        <form id="formularioEstado" class="sign-up-form form" action="" method="">
           <label class="form-label-wrapper">
             <p class="form-label">Titulo</p>
-            <input
-              class="form-input"
-              type="email"
-              placeholder="Nueva Denuncia"
-              required
-            />
+            <p id="tituloboton" class="form-label">Titulo</p>
           </label>
           <label class="form-label-wrapper">
             <p class="form-label">Descripción</p>
-            <input
-              class="form-input"
-              type="password"
-              placeholder="Un bache en la sexta tercera"
-              required
-            />
+            <p id="descripcionboton" class="form-label">Descripción</p>
+          </label>
+          <label class="form-label-wrapper">
+            <p class="form-label">Id</p>
+            <p id="denunciaid" class="form-label">id</p>
           </label>
 
           <label for="cars" class="form-label-wrapper">
             <p class="form-label">Estado</p>
-            <select id="cars" class="form-input opcion">
-              <option value="audi" selected class="opcion">Activo</option>
-              <option value="saab" class="opcion">Desestimado</option>
-              <option value="vw" class="opcion">Solucionado</option>
+            <select id="cars" name="estado" class="form-input opcion">
+              <option value="activo" selected class="opcion">Activo</option>
+              <option value="desestimado" class="opcion">Desestimado</option>
+              <option value="solucionado" class="opcion">Solucionado</option>
+              <option value="EnTrabajo" class="opcion">En Trabajo</option>
             </select>
           </label>
 
           <br />
 
-          <button class="form-btn primary-default-btn transparent-btn">
+          <button id="aceptar" class="form-btn primary-default-btn transparent-btn" type="submit">
             Aceptar
           </button>
         </form>
@@ -60,6 +55,6 @@
     <!-- Icons library -->
     <script src="plugins/feather.min.js"></script>
     <!-- Custom scripts -->
-    <script src="js/script.js"></script>
+    <script src="js/editarEstado.js"></script>
   </body>
 </html>

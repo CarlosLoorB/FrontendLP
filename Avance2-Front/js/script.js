@@ -6,6 +6,14 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function irAEditar(boton,id){
+  var fila= boton.parentNode.parentNode;
+  var nombre = fila.cells[1].textContent;
+  var descricpion = fila.cells[2].textContent;
+  var urlDestino = "http://localhost/proyectos/proyectoPrueba/Avance2-Front/signin.html?nombre=" + encodeURIComponent(nombre) + "&descripcion=" + encodeURIComponent(descricpion) + "&id=" + encodeURIComponent(id);
+  window.location.href=urlDestino;
+}
+
 function incrementarVotoEnPHP(id) {
   // Crear un objeto de datos con el ID que se va a enviar al servidor
   const data = { id: id };
@@ -99,6 +107,8 @@ function procesarDenuncias(denunciasObj) {
       editarButton.type = "button";
       editarButton.className = "botonesEdit";
       editarButton.textContent = "Editar";
+      editarButton.id= denuncia.id;
+      editarButton.setAttribute("onclick","irAEditar(this,this.id)");
       editarCell.appendChild(editarButton);
       row.appendChild(editarCell);
 
